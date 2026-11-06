@@ -76,19 +76,6 @@ python app_nicegui.py
 
 Navigate to http://localhost:8080 in your browser to access:
 
-📊 Monatslauf & Qualitätssicherung: Select delivery periods, run pipelines, and review markdown quality reports.
-
-📖 Klassifikationen & Metadaten: Inspect live ÖNACE systems, regional classifications, and active validation rules.
-
-🔍 Ad-hoc Abfragen & SQL Explorer: Natural-language data inquiries and safe, read-only SQL querying.
-
-📜 Revisionssicherer Audit-Trail: View real-time database-backed log entries and issue formal human approvals.
-
-🔒 Security & Safe Execution
-
-Read-Only SQL Explorer: Restricts queries strictly to SELECT / WITH statements, with timeouts and row caps.
-
-Data Integrity: Duplicate rows are tracked in occurrences without losing record counts. Missing/invalid fields default to official standards (UNB, 0) rather than arbitrary text guesses.
 
 📜 License & Compliance
 
