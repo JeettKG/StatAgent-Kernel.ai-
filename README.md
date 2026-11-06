@@ -22,22 +22,6 @@ Zero Fake Data Policy: All dashboard components, classifications (ÖNACE, Region
 
 Safe Read-Only Query Explorer: Ad-hoc SQL execution guarded against destructive operations (DROP, DELETE, UPDATE).
 
-🏗 System Architecture & Repository Structure
-
-├── app_nicegui.py       # Main NiceGUI Executive Web Interface (Port 8080)
-├── run_2.py             # CLI Entry point for orchestrating runs, approvals & exports
-├── engine_2.py          # Deterministic calculation engine, counting rules & query handler
-├── ingest_2.py          # Data ingestion pipeline & rule verification
-├── common.py            # Database connection, date math, logging & cryptographic hashing
-├── qa/                  # Quality Assurance framework
-│   ├── checks.py        # Automated anomaly detection logic
-│   └── report.py        # Markdown Quality Report compiler
-├── database/            # Database schema initialization scripts (01_schema.sql, 02_laden.sql)
-├── lieferungen/         # Input delivery archive directory (.csv.gz or .csv)
-├── pensionen/           # Input pension report directory (.xlsx)
-├── reports/             # Auto-generated monthly quality reports (.md)
-├── docker-compose.yml   # Docker setup for local PostgreSQL database container
-└── requirements.txt     # Python dependencies
 
 
 🛠 Quick Start & Installation
@@ -50,7 +34,6 @@ Docker Desktop (or a local PostgreSQL 16 instance)
 
 1. Clone the Repository & Install Dependencies
 
-git clone https://github.com/your-username/statagent.git
 cd statagent
 pip install -r requirements.txt
 
@@ -82,39 +65,7 @@ docker logs -f statagent-db
 
 Initialize system schemas, classifications, and default rules:
 
-python run_2.py --init
-
-
-🚀 Usage Guide
-
-Human Approval & Rule Activation
-
-Before running monthly pipelines, authorize the validation rules and rule sets with your full name:
-
-# Approve rules as a verified individual
-python run_2.py --approve rules --by "Jeet Kumar Gupta"
-python run_2.py --approve ruleset:v1_reference_date --by "Jeet Kumar Gupta"
-
-
-Running Monthly Production Batches via CLI
-
-Process deliveries sequentially (chronological execution enforced):
-
-# Run single reporting month
-python run_2.py --delivery 2025-03
-
-# Run full time-series (2024-08 to 2026-07) with auto-approval
-python run_2.py --all --approve-by "Jeet Kumar Gupta"
-
-
-Generating Aggregation Sheets & Special Deliveries
-
-# Export consolidated aggregation sheet
-python run_2.py --sheet v1_reference_date --out output/aggregation_v1.csv
-
-# Generate Ministry Delivery (CR 3)
-python run_2.py --ministry 2026-07
-
+python run.py --init
 
 🖥 Executive Dashboard (NiceGUI Web UI)
 
